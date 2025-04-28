@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme{
-  --font-display: "Poppins", "sans-serif";
+  --font-display: "Fredoka", "sans-serif";
   --breakpoint-3xl: 1920px;
-  --color-primary: #875cf5;
+  --color-primary: #a7c957;
 }
 
 @layer base{
@@ -13,7 +13,7 @@
   }
 
   body{
-    background-color: #fcfbfc;
+    background-color: #f2e8cf;
     overflow-x: hidden;
   }
 
@@ -24,6 +24,6 @@
 }
 
 .btn-primary{
-  @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px]
-  rounded-md my-1 hover:bg-purple-600/15 hover:text-purple-600;
+  @apply w-full text-sm font-medium text-white bg-[#a7c957] shadow-lg shadow-green-600/5 p-[10px]
+  rounded-md my-1 hover:bg-[#6a994e] hover:text-green-600;
 }
