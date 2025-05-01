@@ -7,6 +7,7 @@ const generateToken = (id) => {
 }
 
 exports.registerUser = async (req,res) => {
+    console.log(req.body);
 
     if (!req.body || !req.body.fullName || !req.body.email || !req.body.password) { 
         return res.status(400).json({ message: "All fields are required" });
@@ -54,10 +55,24 @@ exports.loginUser = async (req,res) => {
         }
 
         res.status(200).json({
-            id: user._id,
-            user,
+            user: {
+                id: user._id,
+                name: user.fullName,
+                email: user.email,
+                profileImageUrl: user.profileImageUrl
+            },
             token: generateToken(user._id)
         })
+        console.log("User login successful, sending response:", {
+            user: {
+                id: user._id,
+                name: user.fullName,
+                email: user.email,
+            },
+            token: generateToken(user._id)
+        });
+        
+        
     } catch (err){
         res
         .status(500)
