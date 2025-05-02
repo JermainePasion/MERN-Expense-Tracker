@@ -39,7 +39,7 @@ const Root = () => {
   const isAuthenticated = !!localStorage.getItem("token");
 
   return isAuthenticated  ? (
-    <Navigate to="/dashboard" />
+    <Navigate to="/home" />
   ) : (
     <Navigate to = "/login" />
   );
