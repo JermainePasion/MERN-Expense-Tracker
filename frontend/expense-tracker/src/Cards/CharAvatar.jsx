@@ -1,5 +1,5 @@
 import React from 'react'
-import { getInitials } from '../src/utils/helper'
+import { getInitials } from '../utils/helper'
 
 const CharAvatar = ({name, width, style, height}) => {
     console.log("CharAvatar Name:", name)
