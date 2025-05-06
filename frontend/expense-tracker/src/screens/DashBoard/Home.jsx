@@ -10,6 +10,10 @@ import { IoMdCard } from "react-icons/io";
 import { addThousandsSeparator } from '../../utils/helper';
 import RecentTransactions from '../../Cards/RecentTransactions';
 import FinanceOverview from '../../Cards/FinanceOverview';
+import ExpenseTransactions from '../../Cards/ExpenseTransactions';
+import Last30DaysExpenses from '../../Cards/Last30DaysExpenses';
+import Last60daysIncomeChart from '../../../Charts/Last60daysIncomeChart';
+import RecentIncome from '../../Cards/RecentIncome';
 
 
 const Home = () => {
@@ -52,7 +56,7 @@ const Home = () => {
   return (
     <DashboardLayout activeMenu = "Dashboard">
       <div className='my-5 mx-auto'>
-        {/* <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <InfoCard
           icon = {<IoMdCard/>}
           label = "Total Balance"
@@ -71,7 +75,7 @@ const Home = () => {
           value = {addThousandsSeparator (dashboardData?.totalExpense || 0)}
           color = "bg-red-500"/>
           
-        </div> */}
+        </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
           <RecentTransactions
           transactions = {dashboardData?.recentTransactions}
@@ -83,6 +87,23 @@ const Home = () => {
         totalExpense = {dashboardData?.totalExpense || 0}
         />
 
+        <ExpenseTransactions
+          transactions= {dashboardData?.last30DaysExpenses?.transactions || []}
+          onSeeMore={() => navigate("/expense")} />
+
+        <Last30DaysExpenses
+          data = {dashboardData?.last30DaysExpenses?.transactions || []}
+        />
+
+        <Last60daysIncomeChart
+        data= {dashboardData?.last60DaysIncome?.transactions?.slice(0,4) || []}
+        totalIncome = {dashboardData?.totalIncome || 0} />
+
+      <RecentIncome
+        transactions= {dashboardData?.last60DaysIncome?.transactions || []}
+        onSeeMore={() => navigate("/income")} />
+        
+        
         </div>
       </div>
     </DashboardLayout>
