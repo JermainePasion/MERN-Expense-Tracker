@@ -15,8 +15,9 @@ const IncomeOverView = ({transactions, onAddIncome}) => {
         }, [transactions]);
 
   return (
-    <div className='card'>
-        <div className='flex items-center justify-between'>
+    
+    <div className='card w-full'>
+        <div className='flex items-center justify-between col-auto'>
             <div className=''>
                 <h5 className='text-lg font-semibold'>Income Overview</h5>
                 <p className='text-xs text-gray-400 mt-1'>Track your earning over time and analyze your income trends</p>
