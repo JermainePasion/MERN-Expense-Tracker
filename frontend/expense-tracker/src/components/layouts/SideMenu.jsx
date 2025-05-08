@@ -34,7 +34,7 @@ const SideMenu = ({activeMenu}) => {
                 <img 
                 src={user?.profileImageUrl || ""}
                 alt='Profile Image'
-                className=' w-30 h-30 rounded-full bg-slate-400 ' />) : (
+                className=' w-30 h-30 rounded-lg bg-slate-400 ' />) : (
                     <CharAvatar 
                     name = {user?.name}
                     width = "w-20"
@@ -51,7 +51,7 @@ const SideMenu = ({activeMenu}) => {
                 key={`menu${index}`}
                 className={`w-full flex items-center gap-4 text-[15px] ${
                 activeMenu === item.label ? "text-white bg-primary" : ""
-                } py-3 px-6 rounded-lg mb-3`}
+                } py-3 px-6 rounded-lg mb-3 cursor-pointer`}
                 onClick={() => handleClick(item.path)}
             >
                 <item.icon className=" text-xl" />

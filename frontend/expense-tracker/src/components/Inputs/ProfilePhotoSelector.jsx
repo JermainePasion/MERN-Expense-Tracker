@@ -35,11 +35,11 @@ const onChooseFile = () => {
         className="hidden"
         />
     {!image ?(
-        <div className='w-20 h-20 flex items-center justify-center bg-[#a7c957] rounded-full relative'>
+        <div className='w-20 h-20 flex items-center justify-center bg-[#a7c957] rounded-lg relative'>
             <LuUser className='text-4xl text-[#386641]'/>
             <button
                 type='button'
-                className='w-8 h-8 flex items-center justify-center bg-[#386641] text-white rounded-full absolute -bottom-1 -right-1 '
+                className='w-8 h-8 flex items-center justify-center bg-[#386641] text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer '
                 onClick={onChooseFile}
             >
                 <LuUpload/>
@@ -50,11 +50,11 @@ const onChooseFile = () => {
             <img
             src={previewUrl}
             alt='profile photo'
-            className='w-20 h-20 rounded-full object-cover'
+            className='w-20 h-20 rounded-lg object-cover'
             />
             <button
             type="button"
-            className="w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1"
+            className="w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer"
             onClick={handleRemoveImage}
             >
             <LuTrash/>

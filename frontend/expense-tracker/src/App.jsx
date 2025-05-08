@@ -14,6 +14,7 @@ import Home from './screens/DashBoard/Home';
 import Income from './screens/DashBoard/Income';
 import Expense from './screens/DashBoard/Expense';
 import UserProvider from './context/userContext';
+import Logout from './screens/Auth/Logout';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path = "/" element = {<Root/>} />
             <Route path = "/login" exact element = {<Login/>} />
+            <Route path = "/logout" exact element = {<Logout/>} />
             <Route path = "/signup" exact element = {<SignUp/>} />
             <Route path = "/home" exact element = {<Home/>} />
             <Route path = "/income" exact element = {<Income/>} />
