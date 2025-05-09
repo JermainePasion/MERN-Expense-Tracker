@@ -9,6 +9,7 @@ import { API_PATHS } from '../../utils/apiPaths';
 import { UserContext } from '../../context/userContext';
 import uploadImage from '../../utils/uploadImage';
 
+
 function SignUp() {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState("");
@@ -78,16 +79,16 @@ function SignUp() {
   }
 
   return (
-    <AuthLayout>
-      <div className='lg:w=[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center'>
-        <h2 className='text-xl font-semibold text-black'>Create An Account</h2>
+    
+      <div className=' w-full lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center items-center mx-auto'>
+        <h2 className=' mt-20 text-xl font-semibold text-black'>Create An Account</h2>
         <p className='text-xs text-slate-700 mt-[5px] mb-6'>Enter your details below</p>
 
-        <form onSubmit={handleSignup}>
+        <form onSubmit={handleSignup} className='w-full max-w-2xl'>
 
           <ProfilePhotoSelector image={profilePic} setImage = {setProfilePic}/>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 m-3 '>
             <Input
             value = {fullName}
             onChange = {({ target }) => setFullName(target.value)}
@@ -112,8 +113,8 @@ function SignUp() {
             />
           </div>
           </div>
-          {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
-                    <button type = "submit" className='btn-primary' >
+          {error && <p className='text-red-500 text-xs pb-2.5 '>{error}</p>}
+                    <button type = "submit" className='btn-primary ' >
                       Sign Up
                     </button>
           
@@ -126,7 +127,7 @@ function SignUp() {
         </form>
 
       </div>
-    </AuthLayout>
+
   )
 }
 

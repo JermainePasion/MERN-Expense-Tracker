@@ -1,9 +1,11 @@
 import {
     LuLayoutDashboard,
-    LuHandCoins,
-    LuWalletMinimal,
     LuLogOut,
 } from "react-icons/lu";
+
+import { BsPiggyBank } from "react-icons/bs";
+import { GiTakeMyMoney } from "react-icons/gi";
+
 
 export const SIDE_MENU_DATA =[
     {
@@ -15,14 +17,14 @@ export const SIDE_MENU_DATA =[
     {
         id: "02",
         label: "Income",
-        icon: LuWalletMinimal,
+        icon: BsPiggyBank,
         path:"/income"
     },
 
     {
         id : "03",
         label: "Expenses",
-        icon: LuHandCoins,
+        icon: GiTakeMyMoney,
         path: "/expense"
     },
     {

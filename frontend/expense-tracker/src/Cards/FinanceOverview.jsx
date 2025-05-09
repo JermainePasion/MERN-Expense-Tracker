@@ -14,14 +14,14 @@ const FinanceOverview = ({totalBalance, totalIncome, totalExpense}) => {
     ]
 
   return (
-    <div className='card'>
+    <div className='card bg-gradient-to-r from-[#f2e8cf] via-[#a7c957] to-[#a7c957] animated-background'>
         <div className='flex items-center justify-between'>
             <h5 className='text-lg'>Financial Overview</h5>
         </div>
 
         <CustomPieChart
         data = {balanceData}
-        label = "Total Balance"
+        label = "Current Balance"
         totalAmount={`₱ ${totalBalance}`}
         colors = {COLORS}
         showTextAnchor
