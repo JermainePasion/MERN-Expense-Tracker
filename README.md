@@ -16,5 +16,7 @@ Features:
 
 Image API - Cloudinary
 
+backend/frontend deployment - Vercel
+
 Huge inspiration = https://www.youtube.com/watch?v=PQnbtnsYUho&t
 
