@@ -2,18 +2,19 @@ import React, {createContext, useState } from "react"
 
 export const UserContext = createContext();
 
+
 const UserProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true); // 🆕
 
-
-    //update userdata
     const updateUser = (userData) => {
-        setUser(userData);
-    }
+    setUser(userData);
+    setLoading(false);
+    };
 
-    //clear user data(e.g. on logout)
     const clearUser = () => {
-        setUser(null);
+    setUser(null);
+    setLoading(false);
     };
 
     return(

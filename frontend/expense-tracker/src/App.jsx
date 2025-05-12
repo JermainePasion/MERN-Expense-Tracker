@@ -37,8 +37,12 @@ function App() {
 }
 
 const AppRoutes = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
   useUserAuth();
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
 
   const PrivateRoute = ({ children }) => {
     return user ? children : <Navigate to="/login" />;

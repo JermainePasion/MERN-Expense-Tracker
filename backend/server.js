@@ -11,8 +11,8 @@ const dashboardRoutes = require("./routes/dashboardRoutes")
 const app = express();
 
 const allowedOrigins = [
-    process.env.FRONTEND_URL, // production frontend
-    "http://localhost:5173"   // local dev frontend
+  process.env.CLIENT_URL,
+  "http://localhost:5173"
 ];
 
 app.use(
@@ -23,6 +23,22 @@ app.use(
     credentials: true,
   })
 );
+
+// app.use(
+//     cors({
+//         origin: function (origin, callback) {
+//             if (!origin || allowedOrigins.includes(origin)) {
+//                 callback(null, true);
+//             } else {
+//                 callback(new Error("Not allowed by CORS"));
+//             }
+//         },
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//         credentials: true
+//     })
+// );
+
 app.use(express.json());
 
 connectDB();

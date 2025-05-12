@@ -1,19 +1,23 @@
-
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
 
 const Logout = () => {
   const navigate = useNavigate();
+  const { clearUser } = useContext(UserContext); 
 
   useEffect(() => {
+    
+    localStorage.removeItem('token');
+    
+    
+    clearUser();
 
-    localStorage.removeItem("token");
-
-
+    
     navigate("/login");
-  }, [navigate]);
+  }, [navigate, clearUser]);
 
-  return null;
+  return null; 
 };
 
 export default Logout;
