@@ -43,7 +43,7 @@ const AddExpenseForm = ({onAddExpense}) => {
             <button type='button'
              className='add-btn add-btn-fill'
              onClick={()=>onAddExpense(income)}>
-                Add Income
+                Add Expense
             </button>
         </div>
     </div>
