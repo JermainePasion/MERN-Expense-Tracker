@@ -6,17 +6,18 @@ const uploadImage = async (imageFile) => {
     // append image to form data
     formData.append('image', imageFile);
 
-    try{
+    try {
         const response = await axiosInstance.post(API_PATHS.IMAGE.UPLOAD_IMAGE, formData, {
             headers: {
                 "Content-Type": "multipart/form-data", //set header for file upload
             },
         });
         return response.data;
-    } catch(error){
+    } catch (error) {
+        console.log("Uploading image:", imageFile);
         console.error(`Error uploading profile image:`, error);
         throw error;
     }
 };
 
-export default uploadImage
+export default uploadImage;

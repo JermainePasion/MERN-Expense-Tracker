@@ -10,15 +10,25 @@ const dashboardRoutes = require("./routes/dashboardRoutes")
 
 const app = express();
 
+const allowedOrigins = [
+    process.env.FRONTEND_URL, // production frontend
+    "http://localhost:5173"   // local dev frontend
+];
+
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || "*",
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
-
+        credentials: true
     })
-)
-
+);
 app.use(express.json());
 
 connectDB();
