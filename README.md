@@ -14,5 +14,7 @@ Features:
 
 - Responsive
 
+Image API - Cloudinary
+
 Huge inspiration = https://www.youtube.com/watch?v=PQnbtnsYUho&t
 
