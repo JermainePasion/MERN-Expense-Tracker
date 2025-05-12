@@ -1,4 +1,6 @@
-import React from 'react'
+
+import { useContext, useState, useEffect } from 'react';
+import { UserContext } from './context/userContext';
 import{
   BrowserRouter as Router,
   Routes,
@@ -15,46 +17,49 @@ import Income from './screens/DashBoard/Income';
 import Expense from './screens/DashBoard/Expense';
 import UserProvider from './context/userContext';
 import Logout from './screens/Auth/Logout';
+import { useUserAuth } from './hooks/useUserAuth';
+import userAuthInitializer from './hooks/userAuthInitializer';
 
 function App() {
   return (
     <UserProvider>
-      <div>
-        <Router>
-          <Routes>
-            <Route path = "/" element = {<Root/>} />
-            <Route path = "/login" exact element = {<Login/>} />
-            <Route path = "/logout" exact element = {<Logout/>} />
-            <Route path = "/signup" exact element = {<SignUp/>} />
-            <Route path = "/home" exact element = {<Home/>} />
-            <Route path = "/income" exact element = {<Income/>} />
-            <Route path = "/expense" exact element = {<Expense/>} />
-          </Routes>
-        </Router>
-      </div>
-
-      <Toaster 
-      toastOptions={{
-        className: "",
-        style: {
-          fontSize:"12px"
-        }
-      }}
-      />
+      <Router>
+        <AppRoutes />
+        <Toaster 
+          toastOptions={{
+            className: "",
+            style: { fontSize: "12px" }
+          }}
+        />
+      </Router>
     </UserProvider>
-  )
+  );
 }
 
-export default App;
+const AppRoutes = () => {
+  const { user } = useContext(UserContext);
+  useUserAuth();
+
+  const PrivateRoute = ({ children }) => {
+    return user ? children : <Navigate to="/login" />;
+  };
+
+  return (
+    <Routes>
+      <Route path="/" element={<Root />} />
+      <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+      <Route path="/signup" element={user ? <Navigate to="/home" /> : <SignUp />} />
+      <Route path="/logout" element={<Logout />} />
+      <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/income" element={<PrivateRoute><Income /></PrivateRoute>} />
+      <Route path="/expense" element={<PrivateRoute><Expense /></PrivateRoute>} />
+    </Routes>
+  );
+};
 
 const Root = () => {
-
   const isAuthenticated = !!localStorage.getItem("token");
-
-  return isAuthenticated  ? (
-    <Navigate to="/home" />
-  ) : (
-    <Navigate to = "/login" />
-  );
-
+  return isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/login" />;
 };
+
+export default App;
